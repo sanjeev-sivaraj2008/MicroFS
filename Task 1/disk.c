@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include<string.h>
-#include <stdbool.h>
 #include<stdint.h>
 
 typedef struct 
@@ -23,7 +22,7 @@ void disk_init()
     else
     {
         FILE *fp=fopen("disk.bin","wb");
-        Slot data[8] = {0};
+        Slot data[8]={0};
         fwrite(data,sizeof(Slot),8,fp);
         fclose(fp);
         return;
@@ -45,17 +44,5 @@ int disk_write_slot(Slot *p,int index)
     fwrite(p, sizeof(Slot), 1, f);
     fclose(f);
 }
-int main()
-{
-    disk_init();
-    Slot test1,test2;
-    strncpy(test1.name,"struct",6);
-    test1.in_use=1;
 
-    disk_write_slot(&test1,2);
-    disk_read_slot(&test2,2);
-    printf("%s",test2.name);
-    
-    return 0;
-}
 // YOu will implement read, write here
