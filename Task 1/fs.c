@@ -77,16 +77,5 @@ void fs_delete(char *name)
     printf("Slot %s not found\n",name);
 }
 
-void main()
-{
-disk_init();
 
-
-fs_create("hi","this is the hi file");
-fs_create("bye","This is the bye file");
-fs_read("hi");
-fs_read("bye");
-fs_delete("bye");
-fs_read("bye");
-}
 //you will implement file system logic here
