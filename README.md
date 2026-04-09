@@ -110,8 +110,8 @@ Read `fs.h` completely before writing any code. It tells you exactly what to imp
 
 ## Module ownership
 
-| Module | Branch | Files to create | Depends on |
-|--------|--------|----------------|------------|
+| Module | Branch | Files to create |
+|--------|--------|----------------|
 | Disk layer | `task2/disk` | `src/disk.c`, `src/bitmap.c`, `tests/test_disk.c` |
 | Inode table | `task2/inodes` | `src/inode.c`, `tests/test_inode.c` |
 | File operations | `task2/files` | `src/file.c`, `tests/test_file.c` |
