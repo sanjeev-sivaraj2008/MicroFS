@@ -36,20 +36,21 @@
 /* Block layout on disk (regions, in order):
  *
  *   [ Superblock ][ Inode table ][ Bitmap ][ Journal ][ Data blocks ]
- *       1 block     8 blocks       1 block   32 blocks   rest
+ *       1 block     8 blocks       2 block   32 blocks   rest
  *
  *   Block 0       : superblock
  *   Blocks 1–8    : inode table  (128 inodes × 32 bytes each = 4096 bytes = 8 blocks)
- *   Block 9       : block bitmap (one bit per data block)
- *   Blocks 10–41  : journal      (FS_JOURNAL_BLOCKS)
- *   Blocks 42+    : data blocks
+ *   Block 9-10       : block bitmap (one bit per data block)
+ *   Blocks 11–42  : journal      (FS_JOURNAL_BLOCKS)
+ *   Blocks 43+    : data blocks
  */
 #define FS_SUPERBLOCK_BLOCK  0
 #define FS_INODE_START       1
 #define FS_INODE_BLOCKS      8
-#define FS_BITMAP_BLOCK      9
-#define FS_JOURNAL_START     10
-#define FS_DATA_START        (FS_JOURNAL_START + FS_JOURNAL_BLOCKS)  /* = 42 */
+#define FS_BITMAP_START      9
+#define FS_BITMAP_BLOCKS     2
+#define FS_JOURNAL_START     11
+#define FS_DATA_START        (FS_JOURNAL_START + FS_JOURNAL_BLOCKS)  /* = 43 */
 
 /*
  * RETURN CODES
@@ -374,3 +375,4 @@ int fs_mkfs(const char *path);
  * Returns: FS_OK, FS_ERR_IO, FS_ERR_CORRUPT
  */
 int fs_mount(const char *path);
+#endif
