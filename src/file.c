@@ -16,7 +16,7 @@
  */
 int file_create(const char *name, int parent_ino)
 {
-    if(parent_ino>=128 || parent_ino<0 || name==NULL)
+    if(parent_ino>=FS_MAX_INODES || parent_ino<0 || name==NULL)
     return FS_ERR_BAD_ARG;  
     
     Inode inode;
